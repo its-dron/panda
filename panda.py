@@ -34,6 +34,7 @@ def main(argv):
 
     issueNames = map(lambda x: x.text, bs(html, "html.parser").select("b a"))
     issues = set(re.findall("&iss=(\d+)", html))
+    issues = sorted(list(issues), reverse=True)
 
     if len(issues) == 0:
         print "Unable to find any issues. Do you own any?"
