@@ -14,6 +14,7 @@ The script will generate an HTML file for each issue you have.
 
 ## Requirements
 [requests](http://docs.python-requests.org/en/master/)
+
 [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/)
 
 ## License
