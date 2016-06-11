@@ -13,9 +13,8 @@ python panda.py USERNAME PASSWORD
 The script will generate an HTML file for each issue you have.
 
 ## Requirements
-[requests](http://docs.python-requests.org/en/master/)
-
-[BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/)
+* [Requests](http://docs.python-requests.org/en/master/)
+* [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
