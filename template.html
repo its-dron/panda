@@ -1,0 +1,106 @@
+<html>
+	<head>
+		<title>%2</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		
+		<style>
+			body {
+			  padding-top: 50px;
+			}
+			
+			glyphicon {
+				display:block;
+				text-align:center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="well">
+				<h1>%2</h1>
+			</div>
+			<div class="well">
+				<div class="row">
+					<div class="col-xs-6">
+						<p>
+							<label for="puzzle">Select the puzzle you'd like to check</label>
+							<select class="form-control" id="puzzle">
+								%3
+							</select>
+						</p>
+						
+						<p>
+							<label for="answer">Enter your answer. Capitalization, spaces, and punctuation are ignored</label>
+							<input id="answer" name='answer' type='text' class="form-control" placeholder="answer"/>
+						</p>
+						
+						<p>
+							<input type="button" value="Submit Answer" class="form-control btn btn-primary" onclick="checkAnswer();" />
+						</p>
+					</div>
+					<div class="col-xs-6" style="text-align: center">
+						<span id="correct" class="glyphicon glyphicon-ok" style="color: green; font-size: 13em; display:hidden"></span>
+						<span id="wrong" class="glyphicon glyphicon-remove" style="color: red; font-size: 13em; display:hidden"></span>
+					</div>
+				</div>
+			</div
+		</div>
+	</body>
+	<script>
+		// Set up answers
+		var answers = [];
+		%1
+	
+		// Script to check answer
+		function checkAnswer() {
+			$("#correct").slideUp(100);
+			$("#wrong").slideUp(100);
+			
+			puzzle = $("select").val();
+
+			answerIdx = $("select")[0].selectedIndex;
+			correctAnswer = answers[answerIdx].toLowerCase().replace(/\s/g,'');
+			givenAnswer = $("#answer").val().toLowerCase().replace(/\s/g,'');
+			
+			if (correctAnswer.length == 0) {
+				alert("The answer for " + puzzle + " isn't known. Good luck!");
+				return;
+			}
+			
+			if (correctAnswer.localeCompare(givenAnswer) == 0) {
+				$("#wrong").slideUp(200, function() {
+					$("#correct").slideDown(200);
+				});
+			} else {
+				$("#correct").slideUp(200, function() {
+					$("#wrong").slideDown(200);
+				});
+			}
+		};
+		
+		$(function() {
+			$("#correct").hide();
+			$("#wrong").hide();
+			
+			// Focus on puzzle selector
+			$("#puzzle").focus();
+			
+			// Clear everything when selecting a puzzle
+			$("#puzzle").change(function() {
+				$("#correct").hide();
+				$("#wrong").hide();
+				$("#answer").val('');
+			});
+			
+			// Allow submitting an answer by pressing enter
+			$('#answer').keypress(function (e) {
+				if(e.which == 13) {
+					checkAnswer(); 
+				}
+			});  
+		});
+	</script>
+</html>
