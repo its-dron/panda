@@ -10,11 +10,17 @@ This script will log into pandamagazine.com, then generate an answer checker for
 ## Usage
 python panda.py USERNAME PASSWORD
 
-The script will generate an HTML file for each issue you have.
+Make sure that you have "template.html" in the same directory.
+The script will generate an HTML file for each issue you have. 
 
 ## Requirements
 * [Requests](http://docs.python-requests.org/en/master/)
 * [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/)
+ 
+## Note
+This software only creates a system for users to check their answers, so that you can share older issues you've completed already. Please support the original content creator by buying your own issues at http://www.pandamagazine.com/
+
+
 
 ## License
 This project is licensed under the MIT License
