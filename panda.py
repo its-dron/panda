@@ -1,7 +1,6 @@
 import requests
 from bs4 import BeautifulSoup as bs
 import re
-import Config
 import sys
 
 def main(argv):
